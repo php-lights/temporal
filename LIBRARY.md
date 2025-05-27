@@ -1,28 +1,20 @@
-# author/package
+# neoncitylights/temporal
 [![License][license-badge]][license-url]
 [![Docs][docs-badge]][docs-url]
 [![CI][ci-badge]][ci-url]
 
 [license-badge]: https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square
 [license-url]: #license
-[docs-badge]: https://img.shields.io/github/deployments/php-lights/php/github-pages?label=docs&style=flat-square
-[docs-url]: https://php-lights.github.io/php/
-[ci-badge]: https://img.shields.io/github/actions/workflow/status/php-lights/php/.github/workflows/php.yml?style=flat-square
-[ci-url]: https://github.com/php-lights/php/actions/workflows/php.yml
+[docs-badge]: https://img.shields.io/github/deployments/php-lights/temporal/github-pages?label=docs&style=flat-square
+[docs-url]: https://php-lights.github.io/temporal/
+[ci-badge]: https://img.shields.io/github/actions/workflow/status/php-lights/temporal/.github/workflows/php.yml?style=flat-square
+[ci-url]: https://github.com/php-lights/temporal/actions/workflows/php.yml
 
-Describe the library.
+Experimental PHP implementation of the TC39 Temporal API.
 
 ## Install
 ```sh
 composer install author/package
-```
-
-## Usage
-```php
-use Neoncitylights\ExampleLibrary\HelloWorld;
-
-$greet1 = HelloWorld::greet(); // 'Hello World'
-$greet2 = HelloWorld::greet( 'Bob' ); // 'Hello Bob'
 ```
 
 ## License
