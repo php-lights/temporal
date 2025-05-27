@@ -1,8 +1,8 @@
 <?php
 
-namespace Neoncitylights\ExampleLibrary;
+namespace Neoncitylights\Temporal;
 
-class HelloWorld {
+class Temporal {
 	public static function greet( string $s = "World" ): string {
 		return "Hello {$s}";
 	}
