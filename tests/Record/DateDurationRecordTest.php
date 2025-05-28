@@ -6,6 +6,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Temporal39\Record\DateDurationRecord;
+use Temporal39\Rounding\SignOrZero;
 
 #[CoversClass( DateDurationRecord::class )]
 class DateDurationRecordTest extends TestCase {
@@ -21,16 +22,56 @@ class DateDurationRecordTest extends TestCase {
 	#[DataProvider( 'provideDateDurationSign' )]
 	public function testDateDurationSign(
 		DateDurationRecord $dateDuration,
-		int $expected,
+		SignOrZero $expected,
 	): void {
 		$this->assertSame( $expected, $dateDuration->sign() );
 	}
 
 	public static function provideDateDurationSign(): array {
 		return [
-			[ new DateDurationRecord( 5.0, 4.0, 3.0, 2.0 ), 1 ],
-			[ new DateDurationRecord( -1, 4.0, 3.0, 2.0 ), -1 ],
-			[ new DateDurationRecord( 0.0, 0.0, 0.0, 0.0 ), 0 ],
+			[ new DateDurationRecord( 5.0, 4.0, 3.0, 2.0 ), SignOrZero::Positive ],
+			[ new DateDurationRecord( -1, 4.0, 3.0, 2.0 ), SignOrZero::Negative ],
+			[ new DateDurationRecord( 0.0, 0.0, 0.0, 0.0 ), SignOrZero::Zero ],
+		];
+	}
+
+	#[DataProvider( 'provideAdjust' )]
+	public function testAdjust(
+		DateDurationRecord $originalDuration,
+		DateDurationRecord $expectedDuration,
+		int $days,
+		?int $weeks,
+		?int $months,
+	): void {
+		$this->assertEquals(
+			$expectedDuration,
+			$originalDuration->adjust( $days, $weeks, $months )
+		);
+	}
+
+	public static function provideAdjust(): array {
+		return [
+			[
+				new DateDurationRecord( 2025, 1, 0, 1 ),
+				new DateDurationRecord( 2025, 1, 0, 2 ),
+				2,
+				null,
+				null,
+			],
+			[
+				new DateDurationRecord( 2025, 1, 0, 1 ),
+				new DateDurationRecord( 2025, 1, 2, 2 ),
+				2,
+				2,
+				null,
+			],
+			[
+				new DateDurationRecord( 2025, 1, 0, 1 ),
+				new DateDurationRecord( 2025, 2, 2, 2 ),
+				2,
+				2,
+				2,
+			]
 		];
 	}
 }
