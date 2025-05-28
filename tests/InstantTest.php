@@ -13,25 +13,25 @@ class InstantTest extends TestCase {
 	#[DataProvider( 'provideEpochMilliseconds' )]
 	public function testEpochMilliseconds(
 		BigInteger $bigInteger,
-		float $expected,
+		int $expected,
 	): void {
 		$instant = new Instant( $bigInteger );
-		$this->assertEqualsWithDelta( $expected, $instant->epochMilliseconds(), 0.0 );
+		$this->assertEquals( $expected, $instant->epochMilliseconds() );
 	}
 
 	public static function provideEpochMilliseconds(): array {
 		return [
 			[
 				BigInteger::of( '1000000' ),
-				1.0,
+				1,
 			],
 			[
 				BigInteger::of( '999999' ),
-				0.0
+				0,
 			],
 			[
 				BigInteger::of( '0' ),
-				0.0,
+				0,
 			],
 		];
 	}
