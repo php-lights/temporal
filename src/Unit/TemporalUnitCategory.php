@@ -1,6 +1,6 @@
 <?php
 
-namespace Temporal39;
+namespace Temporal39\Unit;
 
 /**
  * @see https://tc39.es/proposal-temporal/#sec-temporal-temporalunitcategory

@@ -1,6 +1,6 @@
 <?php
 
-namespace Temporal39;
+namespace Temporal39\Unit;
 
 use Temporal39\Rounding\MaxDurationRoundingIncrement;
 
