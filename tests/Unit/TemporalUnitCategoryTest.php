@@ -1,12 +1,12 @@
 <?php
 
-namespace Temporal39\Tests;
+namespace Temporal39\Tests\Unit;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Temporal39\TemporalUnit;
-use Temporal39\TemporalUnitCategory;
+use Temporal39\Unit\TemporalUnit;
+use Temporal39\Unit\TemporalUnitCategory;
 
 #[CoversClass( TemporalUnitCategory::class )]
 class TemporalUnitCategoryTest extends TestCase {
