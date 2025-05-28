@@ -3,7 +3,6 @@
 namespace Temporal39;
 
 use Brick\Math\BigInteger;
-use Brick\Math\Exception\MathException;
 use Brick\Math\RoundingMode as BrickRoundingMode;
 
 readonly class Instant {
@@ -12,13 +11,13 @@ readonly class Instant {
 	) {
 	}
 
-	/**
-	 * @throws MathException If casting to an integer
-	 * causes integer overflow.
-	 */
 	public function epochMilliseconds(): int {
-		$ns = $this->epochNanoseconds;
-		$ms = $ns->toBigRational()->dividedBy( 1e6, BrickRoundingMode::FLOOR );
-		return $ms->toInt();
+		$ns = $this->epochNanoseconds->toBigRational();
+		if ( $ns->isEqualTo( 0 ) ) {
+			return $ns->toFloat();
+		}
+
+		$ms = $ns->dividedBy( 1e6, BrickRoundingMode::FLOOR );
+		return $ms->toFloat();
 	}
 }
