@@ -1,6 +1,6 @@
 <?php
 
-namespace Temporal39\Tests;
+namespace Temporal39\Tests\Unit;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
