@@ -11,11 +11,11 @@
 	"license": "MIT",
 	"autoload": {
 		"psr-4": {
-			"Neoncitylights\\Temporal\\": "src/"
+			"Temporal39\\": "src/"
 		}
 	},
 	"require": {
-		"php": ">=8.3"
+		"php-64bit": ">=8.3"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "47.0.0",

@@ -27,6 +27,9 @@
 			<property name="lineLimit" value="120" />
 		</properties>
 	</rule>
+	<rule ref="Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase">
+		<severity>0</severity>
+	</rule>
 
 	<file>.</file>
 	<arg name="bootstrap" value="./vendor/mediawiki/mediawiki-codesniffer/utils/bootstrap-ci.php" />
