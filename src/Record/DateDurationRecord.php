@@ -21,4 +21,22 @@ readonly class DateDurationRecord {
 	public static function zero(): self {
 		return new self( 0.0, 0.0, 0.0, 0.0 );
 	}
+
+	/**
+	 * @note Implementation of DateDurationSign()
+	 * @see https://tc39.es/proposal-temporal/#sec-temporal-datedurationsign
+	 */
+	public function sign(): int {
+		$values = [ $this->years, $this->months, $this->weeks, $this->days ];
+		foreach ( $values as $value ) {
+			if ( $value < 0 ) {
+				return -1;
+			}
+			if ( $value > 0 ) {
+				return 1;
+			}
+		}
+
+		return 0;
+	}
 }
