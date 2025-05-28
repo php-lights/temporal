@@ -3,7 +3,6 @@
 namespace Temporal39\Record;
 
 /**
- * @codeCoverageIgnore Temporary
  * @see https://tc39.es/proposal-temporal/#sec-temporal-date-duration-records
  */
 readonly class DateDurationRecord {
@@ -13,5 +12,13 @@ readonly class DateDurationRecord {
 		public float $weeks,
 		public float $days,
 	) {
+	}
+
+	/**
+	 * @note Implementation of ZeroDateDuration()
+	 * @see https://tc39.es/proposal-temporal/#sec-temporal-zerodateduration
+	 */
+	public static function zero(): self {
+		return new self( 0.0, 0.0, 0.0, 0.0 );
 	}
 }
