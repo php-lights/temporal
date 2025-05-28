@@ -2,6 +2,8 @@
 
 namespace Temporal39\Record;
 
+use Temporal39\Rounding\SignOrZero;
+
 /**
  * @see https://tc39.es/proposal-temporal/#sec-temporal-date-duration-records
  */
@@ -26,17 +28,28 @@ readonly class DateDurationRecord {
 	 * @note Implementation of DateDurationSign()
 	 * @see https://tc39.es/proposal-temporal/#sec-temporal-datedurationsign
 	 */
-	public function sign(): int {
+	public function sign(): SignOrZero {
 		$values = [ $this->years, $this->months, $this->weeks, $this->days ];
 		foreach ( $values as $value ) {
 			if ( $value < 0 ) {
-				return -1;
+				return SignOrZero::Negative;
 			}
 			if ( $value > 0 ) {
-				return 1;
+				return SignOrZero::Positive;
 			}
 		}
 
-		return 0;
+		return SignOrZero::Zero;
+	}
+
+	/**
+	 * @note Implementation of AdjustDateDurationRecord()
+	 * @see https://tc39.es/proposal-temporal/#sec-temporal-adjustdatedurationrecord
+	 */
+	public function adjust( int $days, ?int $weeks, ?int $months ): self {
+		$weeks ??= $this->weeks;
+		$months ??= $this->months;
+
+		return new self( $this->years, $months, $weeks, $days );
 	}
 }
