@@ -7,7 +7,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Temporal39\Rounding\MaxDurationRoundingIncrement;
 use Temporal39\TemporalUnit;
-use Temporal39\TemporalUnitCategory;
 
 #[CoversClass( TemporalUnit::class )]
 class TemporalUnitTest extends TestCase {

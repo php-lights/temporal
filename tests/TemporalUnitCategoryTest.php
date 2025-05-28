@@ -9,7 +9,7 @@ use Temporal39\TemporalUnit;
 use Temporal39\TemporalUnitCategory;
 
 #[CoversClass( TemporalUnitCategory::class )]
-Class TemporalUnitCategoryTest extends TestCase {
+class TemporalUnitCategoryTest extends TestCase {
 	#[DataProvider( 'provideGetCategory' )]
 	public function testFromTemporalUnit(
 		TemporalUnit $unit,

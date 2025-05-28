@@ -9,19 +9,19 @@ enum TemporalUnitCategory {
 	case Date;
 	case Time;
 
-	public static function fromUnit( TemporalUnit $unit ) {
+	public static function fromUnit( TemporalUnit $unit ): self {
 		return match ( $unit ) {
 			TemporalUnit::Year,
 			TemporalUnit::Month,
 			TemporalUnit::Week,
-			TemporalUnit::Day => TemporalUnitCategory::Date,
+			TemporalUnit::Day => self::Date,
 
 			TemporalUnit::Hour,
 			TemporalUnit::Minute,
 			TemporalUnit::Second,
 			TemporalUnit::Millisecond,
 			TemporalUnit::Microsecond,
-			TemporalUnit::Nanosecond => TemporalUnitCategory::Time,
+			TemporalUnit::Nanosecond => self::Time,
 		};
 	}
 }
